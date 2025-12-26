@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melikşah Kılıç | Data Scientist</title>
+    <meta name="description"
+        content="Melikşah Kılıç is a professional Data Scientist specializing in BigQuery, AWS, and Machine Learning.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #050505;
+            --surface: #121212;
+            --accent: #00f2ff;
+            --accent-dim: rgba(0, 242, 255, 0.1);
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+            --transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Ambient Glows */
+        .glow {
+            position: fixed;
+            width: 60vw;
+            height: 60vw;
+            background: radial-gradient(circle, rgba(0, 242, 255, 0.05) 0%, transparent 70%);
+            top: -10vw;
+            right: -10vw;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        .glow-bottom {
+            position: fixed;
+            width: 80vw;
+            height: 80vw;
+            background: radial-gradient(circle, rgba(0, 242, 255, 0.03) 0%, transparent 70%);
+            bottom: -20vw;
+            left: -20vw;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 0;
+            z-index: 100;
+            backdrop-filter: blur(20px);
+            background: rgba(5, 5, 5, 0.7);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-tag {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: block;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s forwards 0.2s;
+        }
+
+        .hero h1 {
+            font-size: clamp(3.5rem, 10vw, 6rem);
+            line-height: 0.9;
+            font-weight: 800;
+            letter-spacing: -3px;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.8s forwards 0.4s;
+        }
+
+        .hero h1 span {
+            display: block;
+            color: #444;
+            background: linear-gradient(to right, #fff 0%, #333 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.8s forwards 0.6s;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.8s forwards 0.8s;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--bg);
+            border: 1px solid var(--accent);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--accent);
+            box-shadow: 0 10px 30px var(--accent-dim);
+        }
+
+        .btn-secondary {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Sections */
+        section {
+            padding: 10rem 0;
+        }
+
+        .section-header {
+            margin-bottom: 5rem;
+        }
+
+        .section-number {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        /* Experience Cards */
+        .experience-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .job-card {
+            background: var(--surface);
+            padding: 3rem;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: var(--transition);
+        }
+
+        .job-card:hover {
+            border-color: rgba(0, 242, 255, 0.3);
+            transform: translateX(10px);
+        }
+
+        .job-title {
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-title span {
+            color: var(--accent);
+        }
+
+        .job-meta {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .job-content {
+            color: var(--text-dim);
+        }
+
+        .job-content li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 1.5rem;
+            list-style: none;
+        }
+
+        .job-content li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 12px;
+            width: 10px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        /* Education */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 5rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        .social {
+            margin-bottom: 2rem;
+        }
+
+        .social a {
+            color: var(--text-dim);
+            text-decoration: none;
+            margin: 0 1.5rem;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .social a:hover {
+            color: var(--accent);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .job-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .job-card {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="glow"></div>
+    <div class="glow-bottom"></div>
+
+    <header>
+        <div class="container">
+            <a href="#" class="logo">KILIÇ<span>.</span></a>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#education">Education</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="hero-content">
+                <span class="hero-tag">DATA SCIENTIST & ENGINEER</span>
+                <h1>Melikşah Kılıç. <span>I build intelligence.</span></h1>
+                <p>
+                    Leveraging SQL, Python, and AWS to build scalable machine learning pipelines and reveal hidden
+                    market patterns.
+                </p>
+                <div class="cta-group">
+                    <a href="#experience" class="btn btn-primary">Work History</a>
+                    <a href="mailto:meliksahm7@gmail.com" class="btn btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section id="about">
+            <div class="section-header">
+                <span class="section-number">01.</span>
+                <h2>Who I Am</h2>
+            </div>
+            <p style="font-size: 1.5rem; color: var(--text-dim); max-width: 800px;">
+                I'm a Data Scientist based in Istanbul. Currently at <strong>Madduck</strong>, where I bridge the gap
+                between complex datasets and strategic business growth. I specialize in market research, predictive
+                modeling, and automation.
+            </p>
+            <div style="margin-top: 4rem; display: flex; flex-wrap: wrap; gap: 1rem;">
+                <span
+                    style="background: var(--surface); padding: 0.5rem 1.5rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.05)">Python</span>
+                <span
+                    style="background: var(--surface); padding: 0.5rem 1.5rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.05)">SQL</span>
+                <span
+                    style="background: var(--surface); padding: 0.5rem 1.5rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.05)">AWS</span>
+                <span
+                    style="background: var(--surface); padding: 0.5rem 1.5rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.05)">BigQuery</span>
+                <span
+                    style="background: var(--surface); padding: 0.5rem 1.5rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.05)">Machine
+                    Learning</span>
+                <span
+                    style="background: var(--surface); padding: 0.5rem 1.5rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.05)">NLP</span>
+            </div>
+        </section>
+
+        <!-- Experience -->
+        <section id="experience">
+            <div class="section-header">
+                <span class="section-number">02.</span>
+                <h2>Professional Experience</h2>
+            </div>
+            <div class="experience-timeline">
+                <div class="job-card">
+                    <h3 class="job-title">Data Scientist <span>@ Madduck</span></h3>
+                    <div class="job-meta">
+                        <span>Dec 2023 — Present</span>
+                        <span>Istanbul, Türkiye</span>
+                    </div>
+                    <ul class="job-content">
+                        <li>Led mobile app market research using SQL and Python on AWS.</li>
+                        <li>Deployed automated data pipelines integrating web scraping and unsupervised clustering.</li>
+                        <li>Reduced manual effort by 70% through automated analytics and visualization tools.</li>
+                        <li>Built an AI-driven trend detection system analyzing 3,000+ new apps monthly.</li>
+                    </ul>
+                </div>
+                <div class="job-card">
+                    <h3 class="job-title">Teaching Assistant <span>@ Marmara University</span></h3>
+                    <div class="job-meta">
+                        <span>Feb 2023 — Jun 2023</span>
+                        <span>Istanbul</span>
+                    </div>
+                    <ul class="job-content">
+                        <li>Directed machine learning tutorials and assisted in lectures using Python.</li>
+                        <li>Provided technical mentorship and support for 100+ students.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education">
+            <div class="section-header">
+                <span class="section-number">03.</span>
+                <h2>Academics</h2>
+            </div>
+            <div class="edu-grid">
+                <div class="job-card">
+                    <h3>Marmara University</h3>
+                    <p style="color: var(--accent); margin-bottom: 1rem;">Economics (100% English)</p>
+                    <p style="color: var(--text-dim);">GPA: 3.4 / 4.0 (Honor List). Focus on Data Mining, Applied ML,
+                        and Econometrics.</p>
+                </div>
+                <div class="job-card">
+                    <h3>Universidad De Zaragoza</h3>
+                    <p style="color: var(--accent); margin-bottom: 1rem;">Erasmus Exchange</p>
+                    <p style="color: var(--text-dim);">Business Administration & Economics program in Zaragoza, Spain
+                        (2022).</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" style="text-align: center; padding-bottom: 15rem;">
+            <div class="section-header">
+                <span class="section-number">04.</span>
+                <h2>Get In Touch</h2>
+            </div>
+            <p style="font-size: 1.5rem; color: var(--text-dim); max-width: 600px; margin: 0 auto 3rem;">
+                I'm always open to discussing new opportunities, data challenges, or technical collaborations.
+            </p>
+            <a href="mailto:meliksahm7@gmail.com" class="btn btn-primary"
+                style="padding: 1.5rem 4rem; font-size: 1.1rem;">Email Melikşah</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social">
+                <a href="https://github.com/meliksahkilic">GitHub</a>
+                <a href="https://www.linkedin.com/in/meliksah-kilic">LinkedIn</a>
+                <a href="mailto:meliksahm7@gmail.com">Email</a>
+            </div>
+            <p style="color: #333; font-size: 0.8rem; font-family: 'JetBrains Mono'">DESIGNED BY ANTIGRAVITY // 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for fade-in
+        const cards = document.querySelectorAll('.job-card');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.8s ease-out';
+            observer.observe(card);
+        });
+    </script>
+</body>
+
+</html>
