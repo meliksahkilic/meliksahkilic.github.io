@@ -71,7 +71,7 @@
             width: 100%;
             height: 100%;
             z-index: -2;
-            opacity: 0.3;
+            opacity: 0.5;
         }
 
         /* Layout */
@@ -453,6 +453,18 @@
                         <li>Provided technical mentorship and support for 100+ students.</li>
                     </ul>
                 </div>
+                <div class="job-card">
+                    <h3 class="job-title">Growth Intern <span>@ Parabol</span></h3>
+                    <div class="job-meta">
+                        <span>Oct 2021 — Dec 2021</span>
+                        <span>Istanbul, Türkiye</span>
+                    </div>
+                    <ul class="job-content">
+                        <li>Collected data from new clients by conducting market research.</li>
+                        <li>Created a new potential client database.</li>
+                        <li>Presented about the software services of the company to the clients.</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
@@ -465,7 +477,7 @@
             <div class="edu-grid">
                 <div class="job-card">
                     <h3>Marmara University</h3>
-                    <p style="color: var(--accent); margin-bottom: 1rem;">Economics (100% English)</p>
+                    <p style="color: var(--accent); margin-bottom: 1rem;">Economics</p>
                     <p style="color: var(--text-dim);">GPA: 3.4 / 4.0 (Honor List). Focus on Data Mining, Applied ML,
                         and Econometrics.</p>
                 </div>
@@ -537,7 +549,7 @@
                 if (this.y < 0) this.y = canvas.height;
             }
             draw() {
-                ctx.fillStyle = 'rgba(0, 242, 255, 0.5)';
+                ctx.fillStyle = 'rgba(0, 242, 255, 0.7)';
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -563,7 +575,7 @@
                     const dy = p.y - particles[j].y;
                     const dist = Math.sqrt(dx * dx + dy * dy);
                     if (dist < 150) {
-                        ctx.strokeStyle = `rgba(0, 242, 255, ${0.1 * (1 - dist / 150)})`;
+                        ctx.strokeStyle = `rgba(0, 242, 255, ${0.2 * (1 - dist / 150)})`;
                         ctx.lineWidth = 0.5;
                         ctx.beginPath();
                         ctx.moveTo(p.x, p.y);
