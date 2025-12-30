@@ -1,6 +1,6 @@
 # Melikşah Kılıç - Original Portfolio
 
-A premium, custom-built portfolio designed specifically for a Data Scientist.
+My premium, custom-built portfolio designed specifically for a Data Scientist.
 
 ## Design Features
 - Custom typography using 'Outfit' and 'JetBrains Mono'
